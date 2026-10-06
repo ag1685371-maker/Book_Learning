@@ -1,0 +1,1160 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Bo Shares the Berries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,600;0,700;0,800;1,600&display=swap">
+<style>
+  :root {
+    --sky: #D3E9F5;
+    --sky-deep: #BFDDEF;
+    --paper: #FFF8EF;
+    --ink: #5A3F38;
+    --ink-soft: #8D6E63;
+    --teal: #86CCD0;
+    --teal-deep: #67B5BA;
+    --shadow: #5B4440;
+    --bo: #FBE2D2;   --bo-name: #C27A55;
+    --dot: #FDF1C6;  --dot-name: #B98F22;
+    --lulu: #EEE5F9; --lulu-name: #9A80C6;
+    --display: "Fredoka", "Baloo 2", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+    --body: "Nunito", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,.55) 0 2px, transparent 3px) 0 0 / 46px 46px,
+      radial-gradient(ellipse at 50% 0%, #E4F2FA 0%, var(--sky) 55%, var(--sky-deep) 100%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--body);
+    padding-inline: 16px;
+    padding-block: 28px 40px;
+    min-height: 100vh;
+  }
+
+  /* ---------- Sticker lettering (from the reference) ---------- */
+  .sticker {
+    display: inline-grid;
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: .01em;
+    margin: 0;
+    padding: .05em .06em .14em;
+    text-wrap: balance;
+  }
+  .sticker > span { grid-area: 1 / 1; }
+  .sticker .front .l {
+    -webkit-text-stroke: .03em var(--shadow);
+    paint-order: stroke fill;
+    text-shadow: -.05em .055em 0 var(--shadow);
+  }
+  .sticker .w { white-space: nowrap; }
+
+  /* ---------- Book ---------- */
+  .book {
+    max-width: 1120px;
+    margin-inline: auto;
+    background: var(--paper);
+    border-radius: 30px;
+    padding: clamp(14px, 2.4vw, 28px);
+    box-shadow: 0 2px 0 #fff inset, 0 18px 40px -18px rgba(60, 100, 130, .45), 0 4px 0 #E9DCCB;
+    position: relative;
+  }
+  .book::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 2px dashed #EBD9C6;
+    border-radius: 23px;
+    pointer-events: none;
+  }
+  .page {
+    display: grid;
+    grid-template-columns: 1.22fr 1fr;
+    gap: clamp(18px, 3vw, 36px);
+    align-items: center;
+    position: relative;
+  }
+  .page.turn { animation: turn .55s cubic-bezier(.2, .8, .3, 1); }
+  @keyframes turn {
+    from { opacity: .2; transform: translateX(var(--from, 24px)) rotate(var(--tilt, .6deg)); }
+    to { opacity: 1; transform: none; }
+  }
+  .art {
+    border-radius: 22px;
+    overflow: hidden;
+    background: #E7F3FA;
+    box-shadow: 0 0 0 5px #fff, 0 0 0 7px #F0E3D3;
+    margin: 7px;
+  }
+  .art svg { display: block; width: 100%; height: auto; }
+  .words {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 8px;
+    padding-inline: 4px 10px;
+  }
+  .page-no {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  h2.sticker { font-size: clamp(1.75rem, 3.6vw, 2.55rem); }
+  .narration {
+    font-size: clamp(1.1rem, 1.7vw, 1.28rem);
+    line-height: 1.65;
+    font-weight: 600;
+    margin: 0;
+    max-width: 34em;
+  }
+
+  /* ---------- Speech bubbles ---------- */
+  .say {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .avatar {
+    flex: none;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--ring), 0 4px 10px -4px rgba(90, 60, 50, .35);
+  }
+  .bubble {
+    position: relative;
+    background: var(--fill);
+    border-radius: 22px 22px 22px 6px;
+    padding: 10px 16px 12px;
+    font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+    line-height: 1.45;
+    font-weight: 700;
+    box-shadow: 0 3px 0 rgba(90, 60, 50, .08);
+  }
+  .bubble b {
+    display: block;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: .82rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--name);
+    margin-bottom: 2px;
+  }
+  .say.bo   { --fill: var(--bo);   --name: var(--bo-name);   --ring: #F4C2A6; }
+  .say.dot  { --fill: var(--dot);  --name: var(--dot-name);  --ring: #F6DB86; }
+  .say.lulu { --fill: var(--lulu); --name: var(--lulu-name); --ring: #D6C6F0; }
+  .say.think .bubble {
+    background: #fff;
+    border: 3px dashed #F4C2A6;
+    border-radius: 26px;
+    font-style: italic;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover .words { align-items: flex-start; }
+  .cover h1.sticker { font-size: clamp(2.4rem, 5.6vw, 4.2rem); }
+  .tagline {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.9vw, 1.4rem);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .cast {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cast li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fill);
+    border-radius: 999px;
+    padding: 4px 14px 4px 4px;
+    font-weight: 800;
+    font-size: .98rem;
+  }
+  .cast li .avatar { width: 40px; height: 40px; box-shadow: 0 0 0 2px var(--ring); }
+  .cast .bo { --fill: var(--bo); --ring: #F4C2A6; }
+  .cast .dot { --fill: var(--dot); --ring: #F6DB86; }
+  .cast .lulu { --fill: var(--lulu); --ring: #D6C6F0; }
+
+  /* ---------- Moral ---------- */
+  .moral {
+    margin-top: 6px;
+    background: linear-gradient(160deg, #FFF0F2, #FFF6E6);
+    border-radius: 24px;
+    padding: 6px 18px 18px;
+    box-shadow: 0 0 0 3px #F8D3D7;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .moral .page-no { padding-top: 12px; }
+  .moral .sticker { font-size: clamp(1.45rem, 2.7vw, 1.95rem); }
+  .moral p:last-child { margin: 0; font-size: 1.12rem; line-height: 1.6; font-weight: 700; }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    max-width: 1120px;
+    margin: 22px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .btn {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.12rem;
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid var(--teal);
+    border-radius: 999px;
+    padding: 9px 22px 10px;
+    box-shadow: 0 4px 0 var(--teal-deep);
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--teal-deep); }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--teal-deep); }
+  .btn:disabled { opacity: .35; cursor: default; transform: none; box-shadow: 0 4px 0 var(--teal-deep); }
+  .btn.primary { background: #FBD9C4; border-color: #F2A981; box-shadow: 0 4px 0 #DD8E66; }
+  .btn:focus-visible, .dots button:focus-visible { outline: 3px solid #F2A981; outline-offset: 3px; }
+  .dots { display: flex; gap: 9px; flex-wrap: wrap; justify-content: center; }
+  .dots button {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2.5px solid #fff;
+    background: #B9D9E8;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(70, 120, 140, .3);
+    transition: transform .2s;
+  }
+  .dots button[aria-current="true"] { background: var(--c); transform: scale(1.3); }
+
+  /* ---------- Ask the Book (RAG) ---------- */
+  .ask {
+    max-width: 1120px;
+    margin: 34px auto 0;
+    background: var(--paper);
+    border-radius: 30px;
+    padding: clamp(18px, 3vw, 32px);
+    box-shadow: 0 18px 40px -20px rgba(60, 100, 130, .45), 0 4px 0 #E9DCCB;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 3vw, 36px);
+  }
+  .ask-head { display: flex; flex-direction: column; gap: 10px; }
+  .ask-head h2.sticker { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+  .ask-head p { margin: 0; font-size: 1.08rem; line-height: 1.55; font-weight: 600; max-width: 34em; }
+  .kb-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--display); font-weight: 500; font-size: .95rem;
+    color: var(--ink-soft);
+    background: #EEF6F3; border-radius: 999px; padding: 5px 14px 6px;
+    align-self: flex-start;
+  }
+  .kb-status i { width: 9px; height: 9px; border-radius: 50%; background: #E6C35A; display: inline-block; }
+  .kb-status.live i { background: #62B266; }
+  .ask-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ask-form input {
+    flex: 1 1 220px;
+    min-width: 0;
+    font: 700 1.08rem var(--body);
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid #EAD9C6;
+    border-radius: 999px;
+    padding: 10px 18px;
+  }
+  .ask-form input:focus { outline: none; border-color: var(--teal); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips button {
+    font: 700 .95rem var(--body);
+    color: var(--ink);
+    background: #fff;
+    border: 2px solid #EAD9C6;
+    border-radius: 999px;
+    padding: 6px 13px;
+    cursor: pointer;
+  }
+  .chips button:hover { border-color: var(--teal); }
+  .chips button:focus-visible { outline: 3px solid #F2A981; outline-offset: 2px; }
+  .ask-out { display: flex; flex-direction: column; gap: 14px; }
+  .answer {
+    background: var(--bo);
+    border-radius: 24px 24px 24px 8px;
+    padding: 14px 18px 16px;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    font-weight: 700;
+    min-height: 3.4em;
+    white-space: pre-wrap;
+  }
+  .answer.idle { background: #F6EEE4; color: var(--ink-soft); font-weight: 600; }
+  .answer .cite {
+    font: 600 .85rem var(--display);
+    color: #fff; background: var(--bo-name);
+    border: 0; border-radius: 999px; padding: 1px 9px 2px;
+    cursor: pointer; vertical-align: 1px;
+  }
+  .note { margin: 0; font-size: .92rem; color: var(--ink-soft); font-weight: 600; }
+  .sources h3 {
+    margin: 0 0 8px;
+    font: 600 .85rem var(--display);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .sources ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .sources li {
+    display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start;
+    background: #fff; border-radius: 16px; padding: 10px 14px;
+    box-shadow: 0 0 0 2px #F1E6D8;
+  }
+  .sources .pg {
+    font: 600 .82rem var(--display); color: #fff;
+    background: var(--c, var(--teal-deep));
+    border: 0; border-radius: 10px; padding: 4px 9px 5px; cursor: pointer;
+    font-variant-numeric: tabular-nums;
+  }
+  .sources .src-text { font-size: .98rem; line-height: 1.45; font-weight: 600; }
+  .sources .src-text small { display: block; font: 600 .78rem var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+
+  @media (max-width: 860px) {
+    .ask { grid-template-columns: 1fr; }
+    .page { grid-template-columns: 1fr; }
+    .words { padding-inline: 6px; }
+  }
+  @media (max-width: 480px) {
+    .btn { font-size: 1rem; padding: 8px 15px 9px; }
+    .avatar { width: 52px; height: 52px; }
+    .controls { gap: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page.turn { animation: none; }
+    .float { animation: none !important; }
+  }
+  .float { animation: bob 3.6s ease-in-out infinite; transform-box: fill-box; }
+  .float.d2 { animation-delay: -1.2s; }
+  .float.d3 { animation-delay: -2.4s; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+</style>
+
+<!-- ================= Shared drawings ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BCDDF1"/>
+      <stop offset=".75" stop-color="#E9F4F6"/>
+      <stop offset="1" stop-color="#FDF2E4"/>
+    </linearGradient>
+    <linearGradient id="skySunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9CBEE"/>
+      <stop offset=".45" stop-color="#F6C4CC"/>
+      <stop offset=".8" stop-color="#FCDDB8"/>
+      <stop offset="1" stop-color="#FDECCD"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#FFF4C9" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFF4C9" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gingham" width="34" height="34" patternUnits="userSpaceOnUse">
+      <rect width="34" height="34" fill="#FFF6F3"/>
+      <rect width="17" height="34" fill="#F5B9C1" opacity=".55"/>
+      <rect width="34" height="17" fill="#F5B9C1" opacity=".55"/>
+    </pattern>
+
+    <!-- Bear cub body -->
+    <symbol id="bearBody" viewBox="0 0 200 220">
+      <circle cx="52" cy="40" r="22" fill="#D9A47A"/><circle cx="52" cy="40" r="12" fill="#F3BCB2"/>
+      <circle cx="148" cy="40" r="22" fill="#D9A47A"/><circle cx="148" cy="40" r="12" fill="#F3BCB2"/>
+      <ellipse cx="100" cy="166" rx="58" ry="50" fill="#D9A47A"/>
+      <ellipse cx="100" cy="174" rx="36" ry="32" fill="#F5DCC4"/>
+      <ellipse cx="50" cy="160" rx="15" ry="28" fill="#CF976C" transform="rotate(22 50 160)"/>
+      <ellipse cx="150" cy="160" rx="15" ry="28" fill="#CF976C" transform="rotate(-22 150 160)"/>
+      <ellipse cx="72" cy="208" rx="22" ry="12" fill="#CF976C"/><ellipse cx="72" cy="208" rx="10" ry="6" fill="#F3C9B6"/>
+      <ellipse cx="128" cy="208" rx="22" ry="12" fill="#CF976C"/><ellipse cx="128" cy="208" rx="10" ry="6" fill="#F3C9B6"/>
+      <circle cx="100" cy="82" r="56" fill="#DEAB81"/>
+      <ellipse cx="100" cy="103" rx="27" ry="20" fill="#F6DFC8"/>
+      <ellipse cx="100" cy="94" rx="9.5" ry="6.5" fill="#6E4C40"/>
+      <ellipse cx="97" cy="92" rx="3" ry="1.8" fill="#fff" opacity=".7"/>
+      <ellipse cx="66" cy="100" rx="11" ry="7" fill="#F49C9C" opacity=".55"/>
+      <ellipse cx="134" cy="100" rx="11" ry="7" fill="#F49C9C" opacity=".55"/>
+    </symbol>
+    <symbol id="bear-happy" viewBox="0 0 200 220">
+      <use href="#bearBody" width="200" height="220"/>
+      <circle cx="78" cy="78" r="7.5" fill="#4A3632"/><circle cx="80.5" cy="75" r="2.6" fill="#fff"/>
+      <circle cx="122" cy="78" r="7.5" fill="#4A3632"/><circle cx="124.5" cy="75" r="2.6" fill="#fff"/>
+      <path d="M89 106 Q100 117 111 106" stroke="#6E4C40" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="bear-big" viewBox="0 0 200 220">
+      <use href="#bearBody" width="200" height="220"/>
+      <path d="M70 80 Q78 70 86 80" stroke="#4A3632" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M114 80 Q122 70 130 80" stroke="#4A3632" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M88 104 Q100 124 112 104 Z" fill="#C9675F" stroke="#6E4C40" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M93 112 Q100 107 107 112 Q100 118 93 112Z" fill="#F29B9B"/>
+    </symbol>
+    <symbol id="bear-think" viewBox="0 0 200 220">
+      <use href="#bearBody" width="200" height="220"/>
+      <path d="M68 62 Q77 57 86 61" stroke="#9C6E52" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M114 61 Q123 57 132 62" stroke="#9C6E52" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="79" cy="76" r="7.5" fill="#4A3632"/><circle cx="81" cy="72.5" r="2.6" fill="#fff"/>
+      <circle cx="123" cy="76" r="7.5" fill="#4A3632"/><circle cx="125" cy="72.5" r="2.6" fill="#fff"/>
+      <path d="M92 109 Q96 106 100 109 T108 109" stroke="#6E4C40" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Duckling body -->
+    <symbol id="duckBody" viewBox="0 0 200 200">
+      <ellipse cx="84" cy="188" rx="17" ry="7" fill="#F4A86B"/>
+      <ellipse cx="120" cy="188" rx="17" ry="7" fill="#F4A86B"/>
+      <path d="M150 122 Q182 106 174 136 Z" fill="#F9DE8A"/>
+      <ellipse cx="104" cy="142" rx="58" ry="44" fill="#F9DE8A"/>
+      <ellipse cx="122" cy="144" rx="28" ry="19" fill="#F4CD6C" transform="rotate(-14 122 144)"/>
+      <path d="M86 34 Q88 14 100 26 Q92 24 92 36 Z" fill="#FBE39A"/>
+      <circle cx="90" cy="76" r="44" fill="#FCE5A0"/>
+      <ellipse cx="60" cy="92" rx="10" ry="6.5" fill="#F7A3A0" opacity=".55"/>
+      <ellipse cx="120" cy="92" rx="10" ry="6.5" fill="#F7A3A0" opacity=".55"/>
+    </symbol>
+    <symbol id="duck-happy" viewBox="0 0 200 200">
+      <use href="#duckBody" width="200" height="200"/>
+      <circle cx="74" cy="72" r="6.5" fill="#4A3632"/><circle cx="76" cy="69.5" r="2.3" fill="#fff"/>
+      <circle cx="106" cy="72" r="6.5" fill="#4A3632"/><circle cx="108" cy="69.5" r="2.3" fill="#fff"/>
+      <path d="M70 92 Q90 81 110 92 Q90 105 70 92Z" fill="#F4A86B"/>
+      <path d="M75 93 Q90 99 105 93" stroke="#D9844F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="duck-sad" viewBox="0 0 200 200">
+      <use href="#duckBody" width="200" height="200"/>
+      <path d="M64 64 L80 59" stroke="#C99A3E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M100 59 L116 64" stroke="#C99A3E" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="74" cy="74" r="6.5" fill="#4A3632"/><circle cx="76" cy="71.5" r="2.3" fill="#fff"/>
+      <circle cx="106" cy="74" r="6.5" fill="#4A3632"/><circle cx="108" cy="71.5" r="2.3" fill="#fff"/>
+      <path d="M72 94 Q90 85 108 94 Q90 104 72 94Z" fill="#F4A86B"/>
+      <path d="M78 97 Q90 92 102 97" stroke="#D9844F" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="duck-big" viewBox="0 0 200 200">
+      <use href="#duckBody" width="200" height="200"/>
+      <path d="M67 74 Q74 65 81 74" stroke="#4A3632" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path d="M99 74 Q106 65 113 74" stroke="#4A3632" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path d="M74 95 Q90 114 106 95 Z" fill="#EE9466"/>
+      <path d="M68 90 Q90 79 112 90 Q90 98 68 90Z" fill="#F6B07A"/>
+    </symbol>
+
+    <!-- Lamb body -->
+    <symbol id="lambBody" viewBox="0 0 200 220">
+      <rect x="74" y="186" width="15" height="28" rx="7.5" fill="#C9A797"/>
+      <rect x="111" y="186" width="15" height="28" rx="7.5" fill="#C9A797"/>
+      <g fill="#FFFBF5" stroke="#EADBCC" stroke-width="3">
+        <circle cx="58" cy="152" r="23"/><circle cx="78" cy="132" r="23"/><circle cx="104" cy="126" r="23"/>
+        <circle cx="130" cy="134" r="23"/><circle cx="146" cy="156" r="23"/><circle cx="134" cy="180" r="23"/>
+        <circle cx="104" cy="190" r="23"/><circle cx="74" cy="184" r="23"/><circle cx="56" cy="172" r="20"/>
+      </g>
+      <ellipse cx="102" cy="160" rx="54" ry="40" fill="#FFFBF5"/>
+      <ellipse cx="54" cy="84" rx="23" ry="10" fill="#EFCDBE" transform="rotate(-24 54 84)"/>
+      <ellipse cx="56" cy="84" rx="13" ry="5" fill="#F4B5B2" transform="rotate(-24 56 84)"/>
+      <ellipse cx="146" cy="84" rx="23" ry="10" fill="#EFCDBE" transform="rotate(24 146 84)"/>
+      <ellipse cx="144" cy="84" rx="13" ry="5" fill="#F4B5B2" transform="rotate(24 144 84)"/>
+      <ellipse cx="100" cy="88" rx="38" ry="42" fill="#F7E3D6"/>
+      <g fill="#FFFBF5" stroke="#EADBCC" stroke-width="3">
+        <circle cx="78" cy="52" r="15"/><circle cx="122" cy="52" r="15"/><circle cx="100" cy="43" r="17"/>
+      </g>
+      <ellipse cx="100" cy="54" rx="22" ry="9" fill="#FFFBF5"/>
+      <ellipse cx="75" cy="104" rx="9.5" ry="6" fill="#F49C9C" opacity=".5"/>
+      <ellipse cx="125" cy="104" rx="9.5" ry="6" fill="#F49C9C" opacity=".5"/>
+      <ellipse cx="100" cy="103" rx="5.5" ry="3.8" fill="#E39E95"/>
+    </symbol>
+    <symbol id="lamb-happy" viewBox="0 0 200 220">
+      <use href="#lambBody" width="200" height="220"/>
+      <circle cx="86" cy="86" r="6.5" fill="#4A3632"/><circle cx="88" cy="83.5" r="2.3" fill="#fff"/>
+      <circle cx="114" cy="86" r="6.5" fill="#4A3632"/><circle cx="116" cy="83.5" r="2.3" fill="#fff"/>
+      <path d="M100 107 V110 M93 110 Q100 116 107 110" stroke="#B57D74" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lamb-big" viewBox="0 0 200 220">
+      <use href="#lambBody" width="200" height="220"/>
+      <path d="M79 88 Q86 80 93 88" stroke="#4A3632" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path d="M107 88 Q114 80 121 88" stroke="#4A3632" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path d="M91 109 Q100 124 109 109 Z" fill="#D7747A" stroke="#B57D74" stroke-width="2.2" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Props -->
+    <symbol id="berry" viewBox="0 0 40 46">
+      <path d="M20 44 C8 37 3 25 5 16 C7 9 14 8 20 10 C26 8 33 9 35 16 C37 25 32 37 20 44Z" fill="#F38D8F"/>
+      <ellipse cx="13" cy="20" rx="3" ry="5.5" fill="#fff" opacity=".4"/>
+      <g fill="#FFEBB0">
+        <ellipse cx="15" cy="25" rx="1.3" ry="1.8"/><ellipse cx="23" cy="22" rx="1.3" ry="1.8"/>
+        <ellipse cx="28" cy="28" rx="1.3" ry="1.8"/><ellipse cx="18" cy="32" rx="1.3" ry="1.8"/>
+        <ellipse cx="25" cy="35" rx="1.3" ry="1.8"/><ellipse cx="20" cy="39" rx="1.2" ry="1.6"/>
+      </g>
+      <path d="M20 13 L11 7 L17 9.5 L20 2 L23 9.5 L29 7 Z" fill="#92CC8E"/>
+    </symbol>
+    <symbol id="basket" viewBox="0 0 160 120">
+      <path d="M30 62 Q80 -8 130 62" stroke="#C99561" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <use href="#berry" x="26" y="26" width="32" height="37"/>
+      <use href="#berry" x="52" y="18" width="34" height="39"/>
+      <use href="#berry" x="78" y="22" width="34" height="39"/>
+      <use href="#berry" x="102" y="28" width="32" height="37"/>
+      <use href="#berry" x="64" y="34" width="30" height="34"/>
+      <path d="M18 62 H142 L128 112 Q80 121 32 112 Z" fill="#EAC191"/>
+      <path d="M24 80 H136 M28 96 H132" stroke="#D6A472" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M52 66 L56 114 M80 66 V117 M108 66 L104 114" stroke="#D6A472" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+      <rect x="13" y="55" width="134" height="15" rx="7.5" fill="#DBA874"/>
+    </symbol>
+    <symbol id="bush" viewBox="0 0 240 160">
+      <ellipse cx="120" cy="148" rx="112" ry="12" fill="#8CC49A" opacity=".5"/>
+      <circle cx="62" cy="100" r="54" fill="#9FD1A3"/><circle cx="178" cy="102" r="50" fill="#9FD1A3"/>
+      <circle cx="120" cy="76" r="64" fill="#AEDAAE"/>
+      <circle cx="96" cy="58" r="16" fill="#C3E5BF" opacity=".7"/>
+      <use href="#berry" x="40" y="80" width="24" height="28"/><use href="#berry" x="92" y="98" width="24" height="28"/>
+      <use href="#berry" x="132" y="56" width="24" height="28"/><use href="#berry" x="168" y="96" width="24" height="28"/>
+      <use href="#berry" x="76" y="40" width="22" height="25"/><use href="#berry" x="196" y="72" width="22" height="25"/>
+      <use href="#berry" x="124" y="116" width="22" height="25"/>
+    </symbol>
+    <symbol id="tree" viewBox="0 0 240 320">
+      <path d="M104 160 Q100 260 86 318 H152 Q138 260 134 160 Z" fill="#CFA07C"/>
+      <path d="M112 200 Q116 240 108 290" stroke="#B88762" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="120" cy="96" r="76" fill="#A6D6A8"/>
+      <circle cx="56" cy="134" r="52" fill="#97CB9E"/><circle cx="184" cy="134" r="52" fill="#97CB9E"/>
+      <circle cx="120" cy="158" r="54" fill="#9FD1A3"/>
+      <circle cx="92" cy="70" r="26" fill="#BCE3BA" opacity=".7"/>
+    </symbol>
+    <symbol id="cloud" viewBox="0 0 160 80">
+      <g fill="#fff" opacity=".95">
+        <circle cx="42" cy="50" r="26"/><circle cx="78" cy="36" r="33"/><circle cx="114" cy="50" r="26"/>
+        <rect x="40" y="46" width="76" height="30" rx="15"/>
+      </g>
+    </symbol>
+    <symbol id="sun" viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="78" fill="url(#glow)"/>
+      <circle cx="80" cy="80" r="50" fill="#FCDD8E"/>
+      <path d="M62 78 Q68 71 74 78 M86 78 Q92 71 98 78" stroke="#D49A4E" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="58" cy="92" rx="8" ry="5" fill="#F7A99A" opacity=".6"/><ellipse cx="102" cy="92" rx="8" ry="5" fill="#F7A99A" opacity=".6"/>
+      <path d="M70 94 Q80 104 90 94" stroke="#D49A4E" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="flower" viewBox="-10 -10 20 20">
+      <g fill="currentColor"><circle cx="0" cy="-5" r="4"/><circle cx="4.8" cy="-1.5" r="4"/><circle cx="3" cy="4" r="4"/><circle cx="-3" cy="4" r="4"/><circle cx="-4.8" cy="-1.5" r="4"/></g>
+      <circle r="3" fill="#FCE09A"/>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 40 36">
+      <path d="M20 34 C6 24 0 16 4 8 C8 1 17 2 20 9 C23 2 32 1 36 8 C40 16 34 24 20 34Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="sparkle" viewBox="-8 -8 16 16">
+      <path d="M0 -8 Q1 -1 8 0 Q1 1 0 8 Q-1 1 -8 0 Q-1 -1 0 -8Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="leafcup" viewBox="0 0 80 44">
+      <path d="M4 14 Q40 56 76 14 Z" fill="#9FD1A3"/>
+      <path d="M40 16 V36" stroke="#86BE8F" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="40" cy="14" rx="36" ry="8" fill="#AEDCF2"/>
+      <ellipse cx="30" cy="12" rx="10" ry="2.5" fill="#fff" opacity=".7"/>
+    </symbol>
+    <symbol id="hills" viewBox="0 0 800 560">
+      <path d="M0 352 Q190 286 420 336 T800 318 V560 H0 Z" fill="#CDE9CB"/>
+      <path d="M0 418 Q260 358 520 406 T800 396 V560 H0 Z" fill="#AEDAB1"/>
+      <path d="M0 470 Q300 440 560 470 T800 466 V560 H0 Z" fill="#A2D2A7" opacity=".7"/>
+      <use href="#flower" x="40" y="470" width="20" height="20" style="color:#F7C3CB"/>
+      <use href="#flower" x="250" y="500" width="18" height="18" style="color:#fff"/>
+      <use href="#flower" x="610" y="505" width="20" height="20" style="color:#D9CCF1"/>
+      <use href="#flower" x="740" y="460" width="18" height="18" style="color:#F7C3CB"/>
+      <use href="#flower" x="120" y="520" width="16" height="16" style="color:#D9CCF1"/>
+      <use href="#flower" x="470" y="530" width="16" height="16" style="color:#F7C3CB"/>
+      <use href="#flower" x="700" y="530" width="15" height="15" style="color:#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="book" aria-live="polite">
+
+  <!-- ================= Cover ================= -->
+  <section class="page cover" data-page="0" aria-label="Cover">
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="Bo the bear cub, Dot the duckling and Lulu the lamb smiling together in a sunny meadow, with a basket of strawberries.">
+        <rect width="800" height="560" fill="url(#skyDay)"/>
+        <use href="#sun" x="600" y="20" width="160" height="160"/>
+        <use href="#cloud" x="70" y="40" width="160" height="80"/>
+        <use href="#cloud" x="380" y="80" width="120" height="60"/>
+        <use href="#hills" width="800" height="560"/>
+        <use href="#tree" x="-20" y="110" width="240" height="320"/>
+        <use href="#bush" x="590" y="300" width="210" height="140"/>
+        <use href="#lamb-big" x="120" y="262" width="190" height="209"/>
+        <use href="#duck-big" x="530" y="318" width="170" height="170"/>
+        <use href="#bear-big" x="300" y="228" width="210" height="231"/>
+        <use href="#basket" x="335" y="404" width="140" height="105"/>
+        <use class="float" href="#heart" x="270" y="200" width="30" height="27" style="color:#F7B3BD"/>
+        <use class="float d2" href="#heart" x="520" y="230" width="24" height="22" style="color:#F9C9A6"/>
+        <use class="float d3" href="#heart" x="430" y="170" width="20" height="18" style="color:#D9C7F1"/>
+        <use href="#sparkle" x="230" y="300" width="16" height="16" style="color:#fff"/>
+        <use href="#sparkle" x="560" y="290" width="14" height="14" style="color:#fff"/>
+      </svg>
+    </div>
+    <div class="words">
+      <h1 class="sticker" data-sticker>Bo Shares the Berries</h1>
+      <p class="tagline">A cozy little story about sharing</p>
+      <ul class="cast" aria-label="Characters">
+        <li class="bo"><svg class="avatar" viewBox="20 14 160 160" aria-hidden="true"><use href="#bear-happy" width="200" height="220"/></svg>Bo the bear cub</li>
+        <li class="dot"><svg class="avatar" viewBox="28 16 124 124" aria-hidden="true"><use href="#duck-happy" width="200" height="200"/></svg>Dot the duckling</li>
+        <li class="lulu"><svg class="avatar" viewBox="22 20 156 156" aria-hidden="true"><use href="#lamb-happy" width="200" height="220"/></svg>Lulu the lamb</li>
+      </ul>
+      <div><button class="btn primary" type="button" id="start">Open the book</button></div>
+    </div>
+  </section>
+
+  <!-- ================= Page 1 ================= -->
+  <section class="page" data-page="1" aria-label="Page 1" hidden>
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="Bo the bear cub stands happily next to a strawberry bush with a basket full of berries.">
+        <rect width="800" height="560" fill="url(#skyDay)"/>
+        <use href="#sun" x="30" y="16" width="150" height="150"/>
+        <use href="#cloud" x="300" y="50" width="150" height="75"/>
+        <use href="#cloud" x="560" y="30" width="110" height="55"/>
+        <use href="#hills" width="800" height="560"/>
+        <use href="#tree" x="560" y="100" width="240" height="320"/>
+        <use href="#bush" x="20" y="290" width="270" height="180"/>
+        <use href="#bear-happy" x="320" y="248" width="210" height="231"/>
+        <use href="#basket" x="500" y="388" width="150" height="112"/>
+        <use href="#berry" x="300" y="470" width="24" height="28"/>
+        <use href="#sparkle" x="540" y="360" width="16" height="16" style="color:#fff"/>
+        <use href="#sparkle" x="660" y="400" width="12" height="12" style="color:#fff"/>
+        <use href="#sparkle" x="610" y="340" width="10" height="10" style="color:#FCE09A"/>
+      </svg>
+    </div>
+    <div class="words">
+      <p class="page-no">Page 1</p>
+      <h2 class="sticker" data-sticker>A Basket of Berries</h2>
+      <p class="narration">One sunny morning, Bo the bear cub waddled into Clover Meadow. Beside the old oak tree he found a bush full of the reddest, juiciest strawberries he had ever seen. He picked and picked until his little basket was full to the top.</p>
+      <div class="say bo">
+        <svg class="avatar" viewBox="20 14 160 160" aria-hidden="true"><use href="#bear-happy" width="200" height="220"/></svg>
+        <p class="bubble"><b>Bo</b>Yummy, yummy! All of these berries are just for me!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Page 2 ================= -->
+  <section class="page" data-page="2" aria-label="Page 2" hidden>
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="Lulu the lamb and a sad, hungry Dot the duckling arrive while Bo holds his basket of berries.">
+        <rect width="800" height="560" fill="url(#skyDay)"/>
+        <use href="#cloud" x="90" y="40" width="150" height="75"/>
+        <use href="#cloud" x="520" y="60" width="130" height="65"/>
+        <use href="#hills" width="800" height="560"/>
+        <use href="#tree" x="300" y="70" width="210" height="280"/>
+        <use href="#bear-happy" x="70" y="250" width="190" height="209"/>
+        <use href="#basket" x="215" y="398" width="125" height="94"/>
+        <use href="#lamb-happy" x="400" y="254" width="180" height="198"/>
+        <use href="#duck-sad" x="580" y="306" width="160" height="160"/>
+        <g stroke="#E2A178" stroke-width="3.2" fill="none" stroke-linecap="round">
+          <path d="M742 388 q6 -7 12 0 t12 0"/>
+          <path d="M748 406 q6 -7 12 0 t12 0"/>
+        </g>
+        <text x="702" y="370" font-family="Fredoka, sans-serif" font-weight="600" font-size="20" fill="#D39373">grumble</text>
+      </svg>
+    </div>
+    <div class="words">
+      <p class="page-no">Page 2</p>
+      <h2 class="sticker" data-sticker>Two Hungry Friends</h2>
+      <p class="narration">Pitter-patter, waddle-waddle. Along came Dot the duckling and Lulu the lamb. Dot's tummy gave a loud little grumble.</p>
+      <div class="say dot">
+        <svg class="avatar" viewBox="28 16 124 124" aria-hidden="true"><use href="#duck-sad" width="200" height="200"/></svg>
+        <p class="bubble"><b>Dot</b>Oh, my tummy is so rumbly. We looked everywhere, but we couldn't find any breakfast.</p>
+      </div>
+      <div class="say lulu">
+        <svg class="avatar" viewBox="22 20 156 156" aria-hidden="true"><use href="#lamb-happy" width="200" height="220"/></svg>
+        <p class="bubble"><b>Lulu</b>Those berries look so sweet, Bo. You were lucky to find them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Page 3 ================= -->
+  <section class="page" data-page="3" aria-label="Page 3" hidden>
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="Bo hugs his basket and thinks hard, dreaming of berries and a heart, while Dot and Lulu wait nearby.">
+        <rect width="800" height="560" fill="url(#skyDay)"/>
+        <use href="#cloud" x="560" y="40" width="140" height="70"/>
+        <use href="#hills" width="800" height="560"/>
+        <!-- thought bubble -->
+        <g fill="#fff">
+          <ellipse cx="190" cy="118" rx="120" ry="74"/>
+          <circle cx="110" cy="80" r="46"/><circle cx="190" cy="62" r="52"/><circle cx="270" cy="84" r="44"/>
+          <circle cx="120" cy="150" r="40"/><circle cx="260" cy="150" r="40"/>
+          <circle cx="300" cy="222" r="15"/><circle cx="330" cy="252" r="9"/>
+        </g>
+        <use href="#berry" x="110" y="86" width="44" height="50"/>
+        <use href="#berry" x="160" y="70" width="44" height="50"/>
+        <use href="#heart" x="218" y="88" width="56" height="50" style="color:#F7B3BD"/>
+        <use href="#bear-think" x="300" y="226" width="220" height="242"/>
+        <use href="#basket" x="337" y="392" width="146" height="110"/>
+        <use href="#lamb-happy" x="530" y="270" width="150" height="165"/>
+        <use href="#duck-sad" x="650" y="338" width="130" height="130"/>
+      </svg>
+    </div>
+    <div class="words">
+      <p class="page-no">Page 3</p>
+      <h2 class="sticker" data-sticker>Bo Thinks Hard</h2>
+      <p class="narration">Bo hugged his basket tight. He thought and thought. Then he looked at Dot's droopy little face, and he remembered how sad it feels to be hungry.</p>
+      <div class="say bo think">
+        <svg class="avatar" viewBox="20 14 160 160" aria-hidden="true"><use href="#bear-think" width="200" height="220"/></svg>
+        <p class="bubble"><b>Bo thinks</b>If I share, I will have fewer berries&hellip; but my friends won't be hungry anymore.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Page 4 ================= -->
+  <section class="page" data-page="4" aria-label="Page 4" hidden>
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="Bo smiles and offers his berries. Dot brings a leaf cup of water and Lulu brings a pink picnic blanket.">
+        <rect width="800" height="560" fill="url(#skyDay)"/>
+        <use href="#sun" x="320" y="10" width="150" height="150"/>
+        <use href="#cloud" x="60" y="60" width="140" height="70"/>
+        <use href="#cloud" x="600" y="40" width="140" height="70"/>
+        <use href="#hills" width="800" height="560"/>
+        <use href="#lamb-big" x="60" y="262" width="180" height="198"/>
+        <rect x="200" y="420" width="96" height="46" rx="23" fill="url(#gingham)" stroke="#F1B3BC" stroke-width="3"/>
+        <use href="#bear-big" x="300" y="230" width="210" height="231"/>
+        <use href="#basket" x="335" y="404" width="140" height="105"/>
+        <use href="#berry" x="300" y="482" width="24" height="28"/>
+        <use href="#berry" x="490" y="478" width="24" height="28"/>
+        <use href="#duck-big" x="540" y="310" width="160" height="160"/>
+        <use href="#leafcup" x="680" y="440" width="90" height="50"/>
+        <use class="float" href="#heart" x="390" y="370" width="26" height="23" style="color:#F7B3BD"/>
+        <use class="float d2" href="#heart" x="250" y="230" width="24" height="22" style="color:#F9C9A6"/>
+        <use class="float d3" href="#heart" x="560" y="250" width="22" height="20" style="color:#D9C7F1"/>
+        <use href="#sparkle" x="320" y="380" width="16" height="16" style="color:#fff"/>
+        <use href="#sparkle" x="480" y="372" width="14" height="14" style="color:#FCE09A"/>
+      </svg>
+    </div>
+    <div class="words">
+      <p class="page-no">Page 4</p>
+      <h2 class="sticker" data-sticker>Enough for Everyone</h2>
+      <p class="narration">Bo set his basket down on the soft green grass and smiled his biggest smile.</p>
+      <div class="say bo">
+        <svg class="avatar" viewBox="20 14 160 160" aria-hidden="true"><use href="#bear-big" width="200" height="220"/></svg>
+        <p class="bubble"><b>Bo</b>Here, friends! There are enough berries for all of us.</p>
+      </div>
+      <div class="say dot">
+        <svg class="avatar" viewBox="28 16 124 124" aria-hidden="true"><use href="#duck-big" width="200" height="200"/></svg>
+        <p class="bubble"><b>Dot</b>Thank you, Bo! I'll bring cool water from the pond.</p>
+      </div>
+      <div class="say lulu">
+        <svg class="avatar" viewBox="22 20 156 156" aria-hidden="true"><use href="#lamb-big" width="200" height="220"/></svg>
+        <p class="bubble"><b>Lulu</b>And I'll bring my cozy blanket. Let's have a picnic!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Page 5 ================= -->
+  <section class="page" data-page="5" aria-label="Page 5" hidden>
+    <div class="art">
+      <svg viewBox="0 0 800 560" role="img" aria-label="At sunset, the three friends share a picnic on a pink blanket under the oak tree, with hearts floating above them.">
+        <rect width="800" height="560" fill="url(#skySunset)"/>
+        <use href="#sun" x="520" y="230" width="200" height="200"/>
+        <use href="#cloud" x="80" y="60" width="140" height="70" opacity=".8"/>
+        <use href="#cloud" x="420" y="40" width="120" height="60" opacity=".8"/>
+        <use href="#hills" width="800" height="560"/>
+        <rect width="800" height="560" fill="#F6B49C" opacity=".16"/>
+        <use href="#tree" x="-30" y="90" width="250" height="333"/>
+        <path d="M150 452 L660 452 L740 548 L70 548 Z" fill="url(#gingham)" stroke="#F1B3BC" stroke-width="4" stroke-linejoin="round"/>
+        <use href="#lamb-big" x="130" y="268" width="180" height="198"/>
+        <use href="#bear-big" x="310" y="236" width="200" height="220"/>
+        <use href="#duck-big" x="520" y="312" width="150" height="150"/>
+        <use href="#basket" x="360" y="446" width="110" height="82"/>
+        <use href="#leafcup" x="560" y="478" width="80" height="44"/>
+        <use href="#berry" x="250" y="490" width="26" height="30"/>
+        <use href="#berry" x="282" y="500" width="22" height="26"/>
+        <use class="float" href="#heart" x="300" y="190" width="34" height="31" style="color:#F7B3BD"/>
+        <use class="float d2" href="#heart" x="400" y="150" width="28" height="25" style="color:#F9C9A6"/>
+        <use class="float d3" href="#heart" x="500" y="200" width="30" height="27" style="color:#E3D3F5"/>
+        <g fill="#FFF3C4">
+          <circle cx="250" cy="250" r="4"/><circle cx="640" cy="200" r="3.5"/><circle cx="720" cy="300" r="3"/><circle cx="560" cy="140" r="3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="words">
+      <p class="page-no">Page 5</p>
+      <h2 class="sticker" data-sticker>The Sweetest Picnic</h2>
+      <p class="narration">So the three friends had a picnic under the big oak tree. They munched and giggled and told silly stories until the sky turned pink.</p>
+      <div class="say bo">
+        <svg class="avatar" viewBox="20 14 160 160" aria-hidden="true"><use href="#bear-big" width="200" height="220"/></svg>
+        <p class="bubble"><b>Bo</b>Sharing made my berries taste even sweeter!</p>
+      </div>
+      <div class="moral">
+        <p class="page-no">The lesson</p>
+        <p class="sticker" data-sticker>Sharing makes hearts grow bigger</p>
+        <p>When we share, we may have a few less berries, but we gain more friends, more fun, and more love.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="controls" aria-label="Turn the pages">
+  <button class="btn" type="button" id="prev">&lsaquo; Back</button>
+  <div class="dots" id="dots"></div>
+  <button class="btn primary" type="button" id="next">Next &rsaquo;</button>
+</nav>
+
+<section class="ask" aria-labelledby="ask-title">
+  <div class="ask-head">
+    <h2 class="sticker" id="ask-title" data-sticker>Ask the Book</h2>
+    <p>Ask anything about Bo, Dot and Lulu. The book looks up the passages that fit your question, then answers using only what the story says, with page numbers you can tap.</p>
+    <span class="kb-status" id="kb-status"><i></i>Opening the story library&hellip;</span>
+    <form class="ask-form" id="ask-form">
+      <label for="q" class="page-no" style="flex-basis:100%">Your question</label>
+      <input id="q" name="q" type="text" autocomplete="off" maxlength="200" value="Why did Bo decide to share?">
+      <button class="btn primary" type="submit" id="ask-btn">Ask</button>
+      <button class="btn" type="button" id="stop-btn" hidden>Stop</button>
+    </form>
+    <div class="chips" id="chips">
+      <button type="button">What did Dot bring to the picnic?</button>
+      <button type="button">Who is Lulu?</button>
+      <button type="button">Why was Dot sad?</button>
+      <button type="button">What is the lesson of the story?</button>
+    </div>
+  </div>
+  <div class="ask-out">
+    <div class="answer idle" id="answer" aria-live="polite">Pick a question or type your own, then press Ask.</div>
+    <p class="note" id="note" hidden></p>
+    <div class="sources" id="sources" hidden>
+      <h3>Found in the book</h3>
+      <ol id="source-list"></ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Sticker lettering: each letter gets its own warm color with a soft dark edge and shadow.
+  const COLORS = ["#EE8A4F", "#3FA9AC", "#E9879C", "#62B266", "#EDB526", "#5B93D8"];
+  document.querySelectorAll("[data-sticker]").forEach((el) => {
+    const text = el.textContent.trim();
+    el.setAttribute("aria-label", text);
+    const build = (cls, colored) => {
+      const layer = document.createElement("span");
+      layer.className = cls;
+      layer.setAttribute("aria-hidden", "true");
+      let i = 0;
+      text.split(" ").forEach((word, wi) => {
+        if (wi) layer.append(" ");
+        const w = document.createElement("span");
+        w.className = "w";
+        for (const ch of word) {
+          const l = document.createElement("span");
+          l.className = "l";
+          l.textContent = ch;
+          if (colored) l.style.color = COLORS[i % COLORS.length];
+          i++;
+          w.append(l);
+        }
+        layer.append(w);
+      });
+      return layer;
+    };
+    el.textContent = "";
+    el.append(build("front", true));
+  });
+
+  // Page turning
+  const pages = [...document.querySelectorAll(".page")];
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const dots = document.getElementById("dots");
+  let current = 0;
+
+  pages.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.style.setProperty("--c", COLORS[i % COLORS.length]);
+    b.setAttribute("aria-label", i === 0 ? "Cover" : "Page " + i);
+    b.addEventListener("click", () => go(i));
+    dots.append(b);
+  });
+
+  function go(i, fromSwipe) {
+    if (i < 0 || i >= pages.length || i === current && !fromSwipe) return;
+    const forward = i > current;
+    pages[current].hidden = true;
+    current = i;
+    const p = pages[current];
+    p.hidden = false;
+    p.style.setProperty("--from", forward ? "28px" : "-28px");
+    p.style.setProperty("--tilt", forward ? ".6deg" : "-.6deg");
+    p.classList.remove("turn");
+    void p.offsetWidth;
+    p.classList.add("turn");
+    update();
+    const top = document.querySelector(".book").getBoundingClientRect().top;
+    if (top < 0) window.scrollBy({ top: top - 12, behavior: "smooth" });
+  }
+
+  function update() {
+    prev.disabled = current === 0;
+    next.textContent = current === pages.length - 1 ? "Read again ↺" : current === 0 ? "Start ›" : "Next ›";
+    [...dots.children].forEach((d, i) => d.setAttribute("aria-current", i === current ? "true" : "false"));
+  }
+
+  prev.addEventListener("click", () => go(current - 1));
+  next.addEventListener("click", () => go(current === pages.length - 1 ? 0 : current + 1));
+  document.getElementById("start").addEventListener("click", () => go(1));
+  document.addEventListener("keydown", (e) => {
+    if (e.target.closest?.("input, textarea")) return;
+    if (e.key === "ArrowRight") go(Math.min(current + 1, pages.length - 1));
+    if (e.key === "ArrowLeft") go(current - 1);
+  });
+
+  let sx = null;
+  document.querySelector(".book").addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  document.querySelector(".book").addEventListener("touchend", (e) => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 60) go(dx < 0 ? Math.min(current + 1, pages.length - 1) : current - 1);
+    sx = null;
+  });
+
+  update();
+
+  // ================= Story database + retrieval (RAG) =================
+  // Knowledge base: the "chunks" collection in this artifact's database
+  // (pages, dialogue, scenes, characters, moral). If the database can't be
+  // reached, the passages printed in the book itself are indexed instead.
+  const use = (name) => (window.claude?.use ? window.claude.use(name) : Promise.resolve(null));
+  const kbStatus = document.getElementById("kb-status");
+  const answerEl = document.getElementById("answer");
+  const noteEl = document.getElementById("note");
+  const sourcesEl = document.getElementById("sources");
+  const sourceList = document.getElementById("source-list");
+  const form = document.getElementById("ask-form");
+  const qInput = document.getElementById("q");
+  const askBtn = document.getElementById("ask-btn");
+  const stopBtn = document.getElementById("stop-btn");
+
+  function chunksFromPages() {
+    const out = [];
+    pages.forEach((p, i) => {
+      const title = p.querySelector("[data-sticker]")?.getAttribute("aria-label") || "";
+      const scene = p.querySelector(".art svg")?.getAttribute("aria-label");
+      if (scene) out.push({ id: "page" + i + "-scene", page: i, pageTitle: title, kind: "scene", speaker: "", text: scene });
+      p.querySelectorAll(".narration, .tagline").forEach((n, k) =>
+        out.push({ id: "page" + i + "-narr" + k, page: i, pageTitle: title, kind: "narration", speaker: "", text: n.textContent.trim() }));
+      p.querySelectorAll(".say").forEach((s, k) => {
+        const b = s.querySelector(".bubble");
+        const who = b.querySelector("b").textContent.trim();
+        const text = [...b.childNodes].filter((n) => n.nodeName !== "B").map((n) => n.textContent).join("").trim();
+        out.push({ id: "page" + i + "-say" + k, page: i, pageTitle: title, kind: /thinks/i.test(who) ? "thought" : "dialogue", speaker: who.replace(/\s*thinks/i, ""), text });
+      });
+      const moral = p.querySelector(".moral");
+      if (moral) {
+        const head = moral.querySelector("[data-sticker]").getAttribute("aria-label");
+        out.push({ id: "moral", page: i, pageTitle: title, kind: "moral", speaker: "", text: head + ". " + moral.querySelector("p:last-child").textContent.trim() });
+      }
+    });
+    return out;
+  }
+
+  // --- tiny BM25 search with kid-friendly synonyms ---
+  const STOP = new Set("a an the and or but of to in on at for is are was were be been it its this that these those i you he she they we me my your his her their our with as by from so do did does what who why how when where which there here up down out about into all just very can could would will shall not no yes have has had them him us".split(" "));
+  const CONCEPTS = {
+    bo: ["bo", "bear", "cub"],
+    dot: ["dot", "duck", "duckl", "duckling"],
+    lulu: ["lulu", "lamb", "sheep"],
+    berry: ["berry", "strawberry", "fruit", "basket"],
+    hunger: ["hungry", "hunger", "food", "breakfast", "eat", "tummy", "rumbly", "grumble", "munch", "starv"],
+    share: ["share", "shar", "give", "gave", "enough", "fewer", "kind"],
+    lesson: ["lesson", "moral", "learn", "teach", "mean", "point", "heart"],
+    sad: ["sad", "droopy", "upset", "cry", "feel", "felt"],
+    picnic: ["picnic", "blanket", "brought", "bring"],
+    water: ["water", "pond", "drink", "cup"],
+  };
+  const CONCEPT_OF = {};
+  for (const [c, words] of Object.entries(CONCEPTS)) for (const w of words) CONCEPT_OF[w] = c;
+  function stem(w) {
+    w = w.replace(/'s$/, "");
+    if (w.length > 4 && w.endsWith("ies")) return w.slice(0, -3) + "y";
+    if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
+    if (w.length > 4 && w.endsWith("ed")) return w.slice(0, -2);
+    if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
+    return w;
+  }
+  function tokens(s) {
+    const out = [];
+    for (const raw of s.toLowerCase().replace(/[^a-z' ]+/g, " ").split(/\s+/)) {
+      if (!raw || STOP.has(raw)) continue;
+      const w = stem(raw);
+      out.push(w);
+      const c = CONCEPT_OF[w] || CONCEPT_OF[raw];
+      if (c && c !== w) out.push(c);
+    }
+    return out;
+  }
+  function buildIndex(chunks) {
+    const docs = chunks.map((c) => {
+      const toks = tokens([c.speaker, c.pageTitle, c.kind === "moral" ? "lesson moral" : "", c.text].join(" "));
+      const tf = {};
+      for (const t of toks) tf[t] = (tf[t] || 0) + 1;
+      return { c, tf, len: toks.length };
+    });
+    const df = {};
+    for (const d of docs) for (const t in d.tf) df[t] = (df[t] || 0) + 1;
+    const avg = docs.reduce((s, d) => s + d.len, 0) / Math.max(docs.length, 1);
+    return { docs, df, avg, N: docs.length };
+  }
+  function search(index, query, k = 4) {
+    const q = [...new Set(tokens(query))];
+    const k1 = 1.4, b = 0.75;
+    return index.docs.map((d) => {
+      let s = 0;
+      for (const t of q) {
+        const f = d.tf[t];
+        if (!f) continue;
+        const idf = Math.log(1 + (index.N - index.df[t] + 0.5) / (index.df[t] + 0.5));
+        s += idf * (f * (k1 + 1)) / (f + k1 * (1 - b + b * d.len / index.avg));
+      }
+      return { c: d.c, score: s };
+    }).filter((r) => r.score > 0).sort((a, z) => z.score - a.score).slice(0, k);
+  }
+
+  let index = buildIndex(chunksFromPages());
+  let fromDb = false;
+  kbStatus.lastChild.textContent = "Using the " + index.N + " passages printed in the book";
+
+  (async () => {
+    const db = await use("db");
+    if (!db) return;
+    try {
+      const snap = await db.collection("chunks").get();
+      if (snap.empty) return;
+      const chunks = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      index = buildIndex(chunks);
+      fromDb = true;
+      const chars = new Set(chunks.filter((c) => c.kind === "character").map((c) => c.speaker));
+      kbStatus.classList.add("live");
+      kbStatus.lastChild.textContent = "Story database: " + chunks.length + " passages, " + chars.size + " characters";
+    } catch (e) { /* keep the built-in passages */ }
+  })();
+
+  const label = (c) => {
+    const where = c.page > 0 ? "Page " + c.page : c.page === 0 ? "Cover" : "About";
+    const what = c.kind === "dialogue" ? c.speaker + " says" : c.kind === "thought" ? c.speaker + " thinks"
+      : c.kind === "scene" ? "Picture" : c.kind === "moral" ? "The lesson" : c.kind === "character" ? c.speaker : "Story";
+    return { where, what };
+  };
+  const jump = (page) => { go(page); document.querySelector(".book").scrollIntoView({ behavior: "smooth", block: "start" }); };
+
+  function renderSources(hits) {
+    sourceList.textContent = "";
+    hits.forEach(({ c }) => {
+      const li = document.createElement("li");
+      const { where, what } = label(c);
+      const btn = document.createElement("button");
+      btn.className = "pg";
+      btn.type = "button";
+      btn.textContent = where;
+      btn.style.setProperty("--c", COLORS[(Math.max(c.page, 0)) % COLORS.length]);
+      if (c.page >= 0) { btn.addEventListener("click", () => jump(c.page)); btn.setAttribute("aria-label", "Go to " + where); }
+      else btn.disabled = true;
+      const t = document.createElement("div");
+      t.className = "src-text";
+      const sm = document.createElement("small");
+      sm.textContent = what;
+      t.append(sm, c.text);
+      li.append(btn, t);
+      sourceList.append(li);
+    });
+    sourcesEl.hidden = hits.length === 0;
+  }
+
+  function renderAnswer(text) {
+    answerEl.textContent = "";
+    const parts = text.split(/(\((?:Page \d(?:,\s*)?)+\))/g);
+    for (const part of parts) {
+      const nums = part.startsWith("(Page") ? [...part.matchAll(/Page (\d)/g)].map((m) => +m[1]) : null;
+      if (!nums) { answerEl.append(part); continue; }
+      nums.forEach((n, i) => {
+        if (i) answerEl.append(" ");
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "cite"; b.textContent = "Page " + n;
+        b.addEventListener("click", () => jump(n));
+        answerEl.append(b);
+      });
+    }
+  }
+
+  function promptFor(question, hits) {
+    const passages = hits.map(({ c }, i) => {
+      const { where, what } = label(c);
+      return "[" + (i + 1) + "] (" + where + (c.pageTitle ? ', "' + c.pageTitle + '"' : "") + ", " + what + ") " + c.text;
+    }).join("\n");
+    return 'You are the gentle storyteller of the children\'s picture book "Bo Shares the Berries", about Bo the bear cub, Dot the duckling and Lulu the lamb.\n'
+      + "Answer the reader's question using ONLY the passages below. Write 2 to 4 short, warm sentences that a five-year-old can follow. "
+      + 'After each fact from a numbered page, cite it in exactly this form: (Page 3). Facts from the cover or the character notes need no citation. '
+      + "If the passages do not answer the question, say kindly that the book doesn't say, and mention one thing the book does tell us. Never invent events, names or details.\n\n"
+      + "Passages:\n" + passages + "\n\nQuestion: " + question;
+  }
+
+  let ctl = null;
+  stopBtn.addEventListener("click", () => ctl?.abort());
+  document.getElementById("chips").addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+    qInput.value = e.target.textContent;
+    form.requestSubmit();
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const question = qInput.value.trim();
+    if (!question) { qInput.focus(); return; }
+    const hits = search(index, question);
+    renderSources(hits);
+    noteEl.hidden = true;
+    answerEl.classList.remove("idle");
+
+    if (!hits.length) {
+      answerEl.textContent = "Hmm, I couldn't find that in the story. Try asking about Bo, Dot, Lulu, the berries or the picnic.";
+      return;
+    }
+    const sample = await use("sample");
+    if (!sample) {
+      answerEl.textContent = "Here is what the book says: “" + hits[0].c.text + "”";
+      noteEl.textContent = "Claude can't answer in this view, so these are the closest passages from the book.";
+      noteEl.hidden = false;
+      return;
+    }
+    ctl = new AbortController();
+    askBtn.disabled = true;
+    stopBtn.hidden = false;
+    answerEl.textContent = "Thinking…";
+    try {
+      const { text, truncated } = await sample(promptFor(question, hits), {
+        modelTier: "quick",
+        signal: ctl.signal,
+        onText: ({ text }) => renderAnswer(text),
+      });
+      renderAnswer(text);
+      if (truncated) { noteEl.textContent = "The answer was cut short. Try a shorter question."; noteEl.hidden = false; }
+    } catch (err) {
+      if (err.text) renderAnswer(err.text);
+      else answerEl.textContent = "Here is what the book says: “" + hits[0].c.text + "”";
+      const msg = {
+        cancelled: "",
+        not_granted: "Claude wasn't allowed to answer, so here is the closest passage instead.",
+        sampling_disabled: "Claude isn't available for this account, so here is the closest passage instead.",
+        rate_limited: "Lots of questions at once! Wait a moment, then ask again.",
+        refused: "Let's try asking that a different way.",
+      }[err.code] ?? "Something went wrong reaching Claude. Press Ask to try again.";
+      noteEl.textContent = msg;
+      noteEl.hidden = !msg;
+    } finally {
+      askBtn.disabled = false;
+      stopBtn.hidden = true;
+      ctl = null;
+    }
+  });
+</script>
+
+</body></html>

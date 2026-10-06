@@ -1,0 +1,163 @@
+[
+  {
+    "kind": "character",
+    "page": -1,
+    "pageTitle": "",
+    "speaker": "Bo",
+    "text": "Bo is a bear cub with caramel-brown fur, round ears and rosy cheeks. He finds the strawberries, wants them all at first, and then chooses to share them with his friends."
+  },
+  {
+    "kind": "character",
+    "page": -1,
+    "pageTitle": "",
+    "speaker": "Dot",
+    "text": "Dot is a little duckling with butter-yellow feathers and an orange beak. Dot is hungry and sad because she could not find breakfast, and she brings cool water from the pond for the picnic."
+  },
+  {
+    "kind": "character",
+    "page": -1,
+    "pageTitle": "",
+    "speaker": "Lulu",
+    "text": "Lulu is a gentle lamb with fluffy white wool and pink ears. She is Dot's friend, kindly says the berries look sweet, and brings her cozy pink blanket for the picnic."
+  },
+  {
+    "kind": "narration",
+    "page": 0,
+    "pageTitle": "Bo Shares the Berries",
+    "speaker": "",
+    "text": "Bo Shares the Berries is a cozy little story about sharing, starring Bo the bear cub, Dot the duckling and Lulu the lamb."
+  },
+  {
+    "kind": "moral",
+    "page": 5,
+    "pageTitle": "The Sweetest Picnic",
+    "speaker": "",
+    "text": "Sharing makes hearts grow bigger. When we share, we may have a few less berries, but we gain more friends, more fun, and more love."
+  },
+  {
+    "kind": "dialogue",
+    "page": 1,
+    "pageTitle": "A Basket of Berries",
+    "speaker": "Bo",
+    "text": "Yummy, yummy! All of these berries are just for me!"
+  },
+  {
+    "kind": "narration",
+    "page": 1,
+    "pageTitle": "A Basket of Berries",
+    "speaker": "",
+    "text": "One sunny morning, Bo the bear cub waddled into Clover Meadow. Beside the old oak tree he found a bush full of the reddest, juiciest strawberries he had ever seen. He picked and picked until his little basket was full to the top."
+  },
+  {
+    "kind": "scene",
+    "page": 1,
+    "pageTitle": "A Basket of Berries",
+    "speaker": "",
+    "text": "Bo the bear cub stands happily next to a strawberry bush with a basket full of berries, under a smiling sun."
+  },
+  {
+    "kind": "dialogue",
+    "page": 2,
+    "pageTitle": "Two Hungry Friends",
+    "speaker": "Dot",
+    "text": "Oh, my tummy is so rumbly. We looked everywhere, but we couldn't find any breakfast."
+  },
+  {
+    "kind": "dialogue",
+    "page": 2,
+    "pageTitle": "Two Hungry Friends",
+    "speaker": "Lulu",
+    "text": "Those berries look so sweet, Bo. You were lucky to find them."
+  },
+  {
+    "kind": "narration",
+    "page": 2,
+    "pageTitle": "Two Hungry Friends",
+    "speaker": "",
+    "text": "Pitter-patter, waddle-waddle. Along came Dot the duckling and Lulu the lamb. Dot's tummy gave a loud little grumble."
+  },
+  {
+    "kind": "scene",
+    "page": 2,
+    "pageTitle": "Two Hungry Friends",
+    "speaker": "",
+    "text": "Lulu the lamb and a sad, hungry Dot the duckling arrive while Bo holds his basket of berries. Dot's tummy grumbles."
+  },
+  {
+    "kind": "thought",
+    "page": 3,
+    "pageTitle": "Bo Thinks Hard",
+    "speaker": "Bo",
+    "text": "If I share, I will have fewer berries... but my friends won't be hungry anymore."
+  },
+  {
+    "kind": "narration",
+    "page": 3,
+    "pageTitle": "Bo Thinks Hard",
+    "speaker": "",
+    "text": "Bo hugged his basket tight. He thought and thought. Then he looked at Dot's droopy little face, and he remembered how sad it feels to be hungry."
+  },
+  {
+    "kind": "scene",
+    "page": 3,
+    "pageTitle": "Bo Thinks Hard",
+    "speaker": "",
+    "text": "Bo hugs his basket and thinks hard, dreaming of berries and a heart, while Dot and Lulu wait nearby."
+  },
+  {
+    "kind": "dialogue",
+    "page": 4,
+    "pageTitle": "Enough for Everyone",
+    "speaker": "Bo",
+    "text": "Here, friends! There are enough berries for all of us."
+  },
+  {
+    "kind": "dialogue",
+    "page": 4,
+    "pageTitle": "Enough for Everyone",
+    "speaker": "Dot",
+    "text": "Thank you, Bo! I'll bring cool water from the pond."
+  },
+  {
+    "kind": "dialogue",
+    "page": 4,
+    "pageTitle": "Enough for Everyone",
+    "speaker": "Lulu",
+    "text": "And I'll bring my cozy blanket. Let's have a picnic!"
+  },
+  {
+    "kind": "narration",
+    "page": 4,
+    "pageTitle": "Enough for Everyone",
+    "speaker": "",
+    "text": "Bo set his basket down on the soft green grass and smiled his biggest smile."
+  },
+  {
+    "kind": "scene",
+    "page": 4,
+    "pageTitle": "Enough for Everyone",
+    "speaker": "",
+    "text": "Bo smiles and offers his berries. Dot brings a leaf cup of water and Lulu brings a pink picnic blanket."
+  },
+  {
+    "kind": "dialogue",
+    "page": 5,
+    "pageTitle": "The Sweetest Picnic",
+    "speaker": "Bo",
+    "text": "Sharing made my berries taste even sweeter!"
+  },
+  {
+    "kind": "narration",
+    "page": 5,
+    "pageTitle": "The Sweetest Picnic",
+    "speaker": "",
+    "text": "So the three friends had a picnic under the big oak tree. They munched and giggled and told silly stories until the sky turned pink."
+  },
+  {
+    "kind": "scene",
+    "page": 5,
+    "pageTitle": "The Sweetest Picnic",
+    "speaker": "",
+    "text": "At sunset, the three friends share a picnic on a pink blanket under the oak tree, with hearts floating above them."
+  }
+]
